@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang=""><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>How to get (in)to Nix: resources, tools, and personal experience.</title>
+    <meta name="description" content="Professional website">
+    <meta name="author" content='Léo Lavaur'>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+    
+    <link rel="stylesheet" href="/sass/researcher.min.css">
+
+    
+        <link rel="icon" type="image/ico" href="http://leolavaur.re/favicon.ico">
+    
+
+    
+        
+    
+
+    
+</head>
+
+    <body><div class="container mt-5">
+    <nav class="navbar navbar-expand-sm flex-column flex-sm-row text-nowrap p-0">
+        <a class="navbar-brand mx-0 mr-sm-auto" href="http://leolavaur.re/" title="Léo Lavaur">
+          
+            <img src="http://leolavaur.re/logo_small.jpg" alt="logo">
+          
+          Léo Lavaur
+        </a>
+        <div class="navbar-nav flex-row flex-wrap justify-content-center">
+            
+                
+                
+                    <a class="nav-item nav-link" href="/about" title="About">
+                        About
+                    </a>
+                    
+                        <span class="nav-item navbar-text mx-1">/</span>
+                    
+                
+                    <a class="nav-item nav-link" href="/posts" title="Blog">
+                        Blog
+                    </a>
+                    
+                        <span class="nav-item navbar-text mx-1">/</span>
+                    
+                
+                    <a class="nav-item nav-link" href="/contact" title="Contact">
+                        Contact
+                    </a>
+                    
+                
+            
+        </div>
+    </nav>
+</div>
+<hr>
+<div id="content">
+<div class="container">
+    <h1 id="how-to-get-into-nix-resources-tools-and-personal-experience">How to get (in)to Nix: resources, tools, and personal experience.</h1>
+<p>Nix is known to be hard to learn, and the official documentation can be difficult to navigate.
+I&rsquo;ve been playing around with it for two years, following a plethora of guides and blog posts to implement this and that.
+I don&rsquo;t see myself as a Nix expert for anything, but I&rsquo;ve gathered a lot of resources over time.</p>
+<p>I won’t talk about “Why you should use Nix” as there are plenty of posts about it, and if you are here, you’re probably at least curious about it.
+In this post, I go over the different use cases I&rsquo;ve looked at, and redirect the reader to relevant resources on the subject.
+Let&rsquo;s not reinvent the wheel.</p>
+<!-- Available options:
+- note (blue)
+- warning (red)
+- tip (green)
+- info (yellow/orange)
+-->
+
+
+<style type="text/css">
+    .notice {
+        --root-color: #444;
+        --root-background: #eff;
+        --title-color: #fff;
+        --title-background: #7bd;
+        --warning-title: #c33;
+        --warning-content: #fee;
+        --info-title: #fb7;
+        --info-content: #fec;
+        --note-title: #6be;
+        --note-content: #e7f2fa;
+        --tip-title: #5a5;
+        --tip-content: #efe
+    }
+
+     
+
+    body.dark .notice {
+        --root-color: #ddd;
+        --root-background: #eff;
+        --title-color: #fff;
+        --title-background: #7bd;
+        --warning-title: #800;
+        --warning-content: #400;
+        --info-title: #a50;
+        --info-content: #420;
+        --note-title: #069;
+        --note-content: #023;
+        --tip-title: #363;
+        --tip-content: #121
+    }
+
+    .notice {
+        padding: 18px;
+        line-height: 24px;
+        margin-bottom: 24px;
+        border-radius: 4px;
+        color: var(--root-color);
+        background: var(--root-background)
+    }
+
+    .notice p:last-child {
+        margin-bottom: 0
+    }
+
+    .notice-title {
+        margin: -18px -18px 12px;
+        padding: 4px 18px;
+        border-radius: 4px 4px 0 0;
+        font-weight: 700;
+        background: var(--title-background);
+        display: flex;
+    }
+
+    .notice-title * {
+        color: var(--title-color);
+    }
+
+    .notice.warning .notice-title {
+        background: var(--warning-title)
+    }
+
+    .notice.warning {
+        background: var(--warning-content)
+    }
+
+    .notice.info .notice-title {
+        background: var(--info-title)
+    }
+
+    .notice.info {
+        background: var(--info-content)
+    }
+
+    .notice.note .notice-title {
+        background: var(--note-title)
+    }
+
+    .notice.note {
+        background: var(--note-content)
+    }
+
+    .notice.tip .notice-title {
+        background: var(--tip-title)
+    }
+
+    .notice.tip {
+        background: var(--tip-content)
+    }
+
+    .icon-notice {
+        display: inline-flex;
+        align-self: center;
+        margin-right: 8px
+    }
+
+    .icon-notice img,
+    .icon-notice svg {
+        height: 1em;
+        width: 1em;
+        fill: var(--title-color)  
+    }
+
+    .icon-notice img,
+    .icon-notice.baseline svg {
+        top: .125em;
+        position: relative
+    }
+
+     
+
+
+    .notice-collapsible .notice-title {
+        cursor: pointer
+    }
+
+    .notice-collapsible .notice-title:hover .notice-title-text {
+        text-decoration: underline
+    }
+
+    .notice-collapsible .notice-title:focus {
+        outline: 0
+    }
+
+    .notice-toggle-indicator {
+        display: none;
+    }
+
+    .notice-collapsible .notice-toggle-indicator {
+        display: inline-flex;
+        color: var(--title-color);
+        margin-right: 4px;
+        transition: transform .1s ease-in-out;
+        margin-left: auto;
+    }
+
+    .notice-collapsible .notice-content {
+        display: none;
+    }
+
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var notices = document.querySelectorAll(".notice");
+        for (var i = 0; i < notices.length; i++) {
+            (function () {
+                var notice = notices[i];
+                if (notice.classList.contains("notice-collapsible")) {
+                    
+                    var title = notice.querySelector(".notice-title");
+                    var content = notice.querySelector(".notice-content");
+                    var indicator = title.querySelector(".notice-toggle-indicator");
+                    title.addEventListener("click", function () {
+                        content.style.display = content.style.display !== "block" ? "block" : "none";
+                        title.querySelector(".notice-toggle-indicator").style.transform = content.style.display === "none" ? "rotate(0deg)" : "rotate(90deg)";
+                        
+                    });
+                }
+            })();
+
+        }
+    });
+</script>
+
+<div>
+    <svg width="0" height="0" display="none" xmlns="http://www.w3.org/2000/svg">
+        <symbol id="tip-notice" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet">
+            <path
+                d="M504 256c0 136.967-111.033 248-248 248S8 392.967 8 256 119.033 8 256 8s248 111.033 248 248zM227.314 387.314l184-184c6.248-6.248 6.248-16.379 0-22.627l-22.627-22.627c-6.248-6.249-16.379-6.249-22.628 0L216 308.118l-70.059-70.059c-6.248-6.248-16.379-6.248-22.628 0l-22.627 22.627c-6.248 6.248-6.248 16.379 0 22.627l104 104c6.249 6.249 16.379 6.249 22.628.001z" />
+        </symbol>
+        <symbol id="note-notice" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet">
+            <path
+                d="M504 256c0 136.997-111.043 248-248 248S8 392.997 8 256C8 119.083 119.043 8 256 8s248 111.083 248 248zm-248 50c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z" />
+        </symbol>
+        <symbol id="warning-notice" viewBox="0 0 576 512" preserveAspectRatio="xMidYMid meet">
+            <path
+                d="M569.517 440.013C587.975 472.007 564.806 512 527.94 512H48.054c-36.937 0-59.999-40.055-41.577-71.987L246.423 23.985c18.467-32.009 64.72-31.951 83.154 0l239.94 416.028zM288 354c-25.405 0-46 20.595-46 46s20.595 46 46 46 46-20.595 46-46-20.595-46-46-46zm-43.673-165.346l7.418 136c.347 6.364 5.609 11.346 11.982 11.346h48.546c6.373 0 11.635-4.982 11.982-11.346l7.418-136c.375-6.874-5.098-12.654-11.982-12.654h-63.383c-6.884 0-12.356 5.78-11.981 12.654z" />
+        </symbol>
+        <symbol id="info-notice" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet">
+            <path
+                d="M256 8C119.043 8 8 119.083 8 256c0 136.997 111.043 248 248 248s248-111.003 248-248C504 119.083 392.957 8 256 8zm0 110c23.196 0 42 18.804 42 42s-18.804 42-42 42-42-18.804-42-42 18.804-42 42-42zm56 254c0 6.627-5.373 12-12 12h-88c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h12v-64h-12c-6.627 0-12-5.373-12-12v-24c0-6.627 5.373-12 12-12h64c6.627 0 12 5.373 12 12v100h12c6.627 0 12 5.373 12 12v24z" />
+        </symbol>
+    </svg>
+</div><div class="notice info "  id="Disclaimer" >
+    <p class="first notice-title">
+        <span class="icon-notice baseline">
+            <svg>
+                <use href="#info-notice"></use>
+            </svg>
+        </span>
+        <span class="notice-title-text">Disclaimer</span>
+        <span class="notice-toggle-indicator" style="transform: rotate(0deg);"> > </span>
+    </p>
+    <div class="notice-content"><p>This is an opinionated guide referring to sometimes opinionated resources.
+Therefore, it probably won&rsquo;t be representative of a <em>ground-truth</em> about Nix, but I&rsquo;ll try to follow where (at least part of) the community goes.</p></div>
+</div>
+<figure>
+    <img src="images/nixallthethings.png" width="70%"/> <figcaption>
+            <h4>Nix all the things!</h4>
+        </figcaption>
+</figure>
+
+<h2 id="general-resources">General resources</h2>
+<p>The official documentation for Nix as often regarded as difficult to navigate, and sometimes too old.
+It is, however, a great way to familiarize with Nix&rsquo; core concepts, and the motivation behind it.
+I would definitely advise starting <a href="https://nixos.org">there</a>.</p>
+<h3 id="official">Official</h3>
+<p>Nix&rsquo;s official documentation is structured around three manuals, one for each application of Nix.
+These manuals should remain the reference about Nix.
+I advise readers to start by going through the first two before digging too far into Nix.</p>
+<ul>
+<li>
+<p>Nix is a package manager that focuses on reproducible and declarable packaging.
+Packages are described using the Nix Expression Language, a pure, functional, programming language.
+Both are described in the <a href="https://nixos.org/manual/nix/stable/">Nix Manual</a>.
+However, I would advise against spending too much time on the old set of <code>nix-*</code> commands, as they&rsquo;ll be progressively replaced by the more modern <code>nix</code> CLI.</p>
+</li>
+<li>
+<p>Nixpkgs is one of the biggest set of packages around.
+It uses the Nix Expression Language to package binaries, scripts, and libraries.
+The <a href="https://nixos.org/manual/nixpkgs/stable">Nixpkgs Manual</a> provides details on how to download and build packages from Nixpkgs, as well as how to package unavailable softwares and expends on Nixpkgs&rsquo; features.</p>
+</li>
+<li>
+<p>NixOS is a Linux distribution based on Nix and Nixpkgs.
+It allows users to declaratively define the expected state of their distribution, and generate an image, a container, or a filesystem that respects this definition.
+The <a href="https://nixos.org/manual/nixos/stable">NixOS Manual</a> provides details on the NixOS-related configuration option, and overall usage.
+Since it focuses on the distribution, I would not advise reading the NixOS Manual, unless you have interest in using the distribution, as it adds another layer of complexity.
+It is easier to comprehend if you are already familiar with Nix.</p>
+</li>
+</ul>
+
+
+<div class="notice note  notice-collapsible " >
+    <p class="first notice-title">
+        <span class="icon-notice baseline">
+            <svg>
+                <use href="#note-notice"></use>
+            </svg>
+        </span>
+        <span class="notice-title-text">About Nix flakes</span>
+        <span class="notice-toggle-indicator" style="transform: rotate(0deg);"> > </span>
+    </p>
+    <div class="notice-content"><p>Starting with Nix 2.4, Nix ships with <em>flakes,</em> a new way to pin Nixpkgs revisions and specify packages dependencies.
+It&rsquo;s often considered as the future of Nix.
+Many resources now deem channels (the old way) deprecated, and advocate for new users to focus solely on <em>flakes</em>.
+I personally have migrated all my workflows to flakes, and would not go back.</p>
+<p>However, <em>flakes</em> are still officially considered as experimental.
+The official documentation, especially the Nix and Nixpkgs Manual, is often criticized for the lack of resources on <em>flakes</em> and the fact it still uses channels everywhere.
+The reference for the <code>nix</code> command (in the Nix Manual) contains <a href="https://nixos.org/manual/nix/unstable/command-ref/new-cli/nix3-flake.html">details about flakes</a> and how they should be used.
+This is, AFAIK, the only official resource.</p></div>
+</div>
+<p>The official <a href="https://nixos.org/learn.html">learning portal</a> also has smaller guides for specific aspects of the environment, such as how to pin Nixpkgs, how to use Nix for developer environments or to build Docker images.</p>
+<p>The official team also maintain useful tools:</p>
+<ul>
+<li>
+<p>The <a href="https://search.nixos.org/packages">Package Search</a> allows users to search the immense collection of Nixpkgs, among the different releases and channels.</p>
+</li>
+<li>
+<p>The <a href="https://search.nixos.org/options">Option Search</a> indexes the available options in official
+NixOS modules, alongside their documentation.
+There are several community efforts to provide unified interfaces to search options in NixOS, as well as other similar tools, such as Home-Manager or Nix Darwin (see below).</p>
+</li>
+</ul>
+<h3 id="unofficial">Unofficial</h3>
+<p>Due to how rapidly the ecosystem evolves, the official documentation sometimes seems to lack content, features, and tools.
+The evergrowing community stepped in to fill the gaps. Here are the most interesting semi-official or fully community-driven resources.</p>
+<ul>
+<li>
+<p><a href="https://nixos.org/guides/nix-pills/index.html">Nix Pills</a> is a semi-official introduction to
+Nix that originally was a series of posts by Luca Bruno, between 2014 and 2014.
+It&rsquo;s often referred to as <em>The classic introduction to Nix</em>.
+Since 2017, it is ported to the official website and kept updated.
+It’s a perfect resource for newcomers as it covers, with simple words, most of the concepts behind Nix and it’s language.</p>
+
+
+<div class="notice info "  id="Words of warning" >
+    <p class="first notice-title">
+        <span class="icon-notice baseline">
+            <svg>
+                <use href="#info-notice"></use>
+            </svg>
+        </span>
+        <span class="notice-title-text">Words of warning</span>
+        <span class="notice-toggle-indicator" style="transform: rotate(0deg);"> > </span>
+    </p>
+    <div class="notice-content"><p>While you probably won’t encounter mistake in the <em>Pills</em>, they might feel outdated as they don’t mention flakes.
+If you start with flakes (which you should!), a lot of them might be irrelevant.
+If you don’t want to read all of it, you can probably skip pills 2–3 and 10–14, as they dig into packages the old way.
+It remains worth reading, though!</p></div>
+</div>
+</li>
+<li>
+<p>The official <a href="https://discourse.nixos.org">Discourse</a> server for the community allows anyone to get help on   everything Nix-related.
+I consider it as a semi-official resource, as while it&rsquo;s hosted by the NixOS organization, it&rsquo;s populated by users.
+It&rsquo;s a nice place to search for common errors and/or objectives.
+If you want to do something, it&rsquo;s likely that someone else did too.</p>
+</li>
+<li>
+<p>The <a href="https://nixos.wiki">NixOS Wiki</a> is an attempt to make the documentation more searchable and interactive.
+It works like most wikis, and often seem more up-to-date than the official docs.
+Contributors add code examples that you can reuse in your own projects.
+This is a great resource when you&rsquo;re familiar with the ecosystem, but want to dig a specific aspect.</p>
+</li>
+<li>
+<p>Inspired by other &ldquo;A tour of *&rdquo; series (<a href="https://go.dev/tour/welcome/1">A tour of Go</a>, <a href="https://tourofrust.com/">A tour of Rust</a>, &hellip;), <a href="https://nixcloud.io/tour/?id=1">A tour of Nix</a> provides a set of interactive tutorials where your can run Nix commands in a web-based playground.
+I&rsquo;ve never used it myself, but it allows you to play around without installing the tools.</p>
+</li>
+<li>
+<p><a href="https://nix.dev">nix.dev</a> is an opiniated guide to Nix by Domen Kožar that aim at completing the official documentation.
+I wouldn&rsquo;t advise readers to use it as their main resource, however, as it does not cover flakes.
+There are still interesting articles, like on shell environments, continuous integration, and deploying NixOS hosts.</p>
+</li>
+<li>
+<p><a href="https://zero-to-nix.com">Zero to Nix</a> is a very recent resource that aim at filling the gap between the official resources and the state of the community.
+It is <em>very</em> opiniated, as it focuses on flakes solely, and considers channels and other legacy nix commands as deprecated.
+This resource has multiple benefits:</p>
+<ul>
+<li>It starts &ldquo;from scratch&rdquo;, targeting a very wide audience.
+You could technically use it to learn Nix without prior knowledge.</li>
+<li>It focuses on flake, that many consider the future of Nix.</li>
+<li>It links a lot of other resources, both from official and community-driven documentation.</li>
+<li>It is done by Determinate Systems, where a lot of people that are active in Nix work, including Eelco Dolstra, one of the authors of the original papers on Nix and NixOS.</li>
+</ul>
+</li>
+<li>
+<p>Tweag’s <a href="https://www.tweag.io/blog/2020-05-25-flakes/">introductional series</a> on Nix flakes is a fantastic resource to discover flakes.
+It was also written by Nix founders (hey Eelco!).
+You need basics on the Nix Expression Language to fully understand the given examples.
+Tweag&rsquo;s blog overall is a great resource for everything Nix related.</p>
+</li>
+<li>
+<p>Ian Henry’s <a href="https://ianthehenry.com/posts/how-to-learn-nix/introduction/">How to Learn Nix</a> is another blog series on Nix, but with a very different approach.
+The reader follows Ian, going through the Nix manual as he tries to grasp <em>how Nix does things</em>, instead of just <em>how to do stuff with Nix</em>.
+As we go through the articles, we dive into Nix’s internals.
+This one of my personal favorites, as it is well written, often amusing, and goes deep into the concepts.
+As the author puts it, a “series of blog posts about someone you’ve never met reading a manual about an obscure piece of technology you’ve barely heard of? It doesn’t get much better than that.”
+However, for most users, it might be overkill.</p>
+</li>
+<li>
+<p><a href="https://github.com/nix-community/awesome-nix">awesome-nix</a> is yet another “curated list of awesome resources”, this time about Nix.
+Like other lists of this new <em>genre</em>, it’s very subjective and kind of vague; yet you might find what you were looking for.</p>
+</li>
+</ul>
+<p>Alongside these resources, the community also maintain useful tools for digging through Nix.</p>
+<ul>
+<li>
+<p><a href="https://mynixos.com/">MyNixOS</a> is intended as a configuration-assistant tool for Nix shells,
+NixOS, and Home-Manager.
+However, it&rsquo;s also very useful to search options and packages for all supported platforms.
+I personally rarely use it, but see the benefits.</p>
+</li>
+<li>
+<p><a href="https://cachix.org">Cachix</a> is a company-sponsored cache management tool to build and maintain your own Nix cache server.
+Especially, Cachix hosts cache servers for a lot of community projects, like nix-community&rsquo;s.</p>
+</li>
+</ul>
+<h2 id="then-how-to-start">Then how to start?</h2>
+<p>Even with this list, reading through all of it would take a lot of time.
+If you just want to get familiar with the technology, you can focus on the following:</p>
+<ol>
+<li>
+<p>Start with Determinate Systems’ <a href="https://zero-to-nix.com/">Zero to Nix</a> tutorial.
+Embrace flakes and the Nix 2.0 CLI, as it is taught in this series.
+Follow the links to other concepts if you’re curious, but skip anything mentioning channels for now, as (1) you probably won’t need it, and (2) it might conflict with stuff your read.</p>
+</li>
+<li>
+<p>Go over the <a href="https://nixos.org/manual/nix/stable/">Nix manual</a>, especially the sections about the language syntax.
+Being able to understand the language is key for digging into it afterwards.</p>
+</li>
+<li>
+<p>Play around! Install Nix (if you didn&rsquo;t already), and try installing a package, or writing a
+shell environment.</p>
+</li>
+</ol>
+<p>While I would still recommend reading through at least one of the resources I previously mentioned, you can also start with a specific objective, and learn Nix along the way.
+Therefore, you will find hereafter specific resources depending on your objective to “streamline” your learning.</p>
+<h3 id="reproducible-development-environments">Reproducible development environments</h3>
+<p>Probably one of the main use case for Nix is the creation of reproducible development environments.
+Let’s look at some situations where you could benefit from Nix.</p>
+<ul>
+<li>
+<p>Say you are a developer in a team, working on some Python project.
+To make things easier for your colleagues, you commit your <code>requirements.txt</code>.
+After installing all off your dependencies on their system, they are still unable to run your code, as it fails with deprecation warnings.</p>
+<blockquote>
+<p>Granted, this could mostly be solved by using Poetry (or other equivalent Python package manager) and versioning the lock file.
+However, Nix&rsquo; approach is language-agnostic.</p>
+</blockquote>
+</li>
+<li>
+<p>Say you work on deployment, and that you split the workload with you colleagues.
+When you ran the Ansible recipe that your colleague built and tested, it failed, leaving you with a broken environment.</p>
+</li>
+<li>
+<p>Say that you develop a binary application that is dynamically linked.
+You are forced to push a quick patch on the remote because of a bugfix recently added to <code>glibc</code>, that you know about because you use a rolling release Linux distribution.
+Your co-workers do not have the <code>glibc</code> fix yet, and cannot run the new version.</p>
+</li>
+</ul>
+<p>These examples of misfortune are all caused by version mismatch, happening at different level in the tool chain.
+Some situations can be fixed, like the Python version, by adding other tools to the mix, but Nix offers a do-it-all solution.</p>
+<p>If you are interested in reproducible development environments, have a look at the following resources:</p>
+<ul>
+<li>
+<p><a href="https://zero-to-nix.com/start/nix-develop">This article</a> from Zero to Nix’s quick start guide focuses on using flakes for development environments.
+You’ll learn how <code>nix develop</code>, the command to instantiate shells, can be used to setup development environments that are independent of the host system.
+If it&rsquo;s the very first resource about Nix your read, go back to the first sections of the quick start guide.</p>
+</li>
+<li>
+<p><a href="https://nix.dev/tutorials/dev-environment">This article</a> from nix.dev presents the <em>old</em> way,
+without flakes.
+It sometimes represents a simpler alternative as it does not require users to
+enable any feature that is labeled as “experimental”, and the syntax a <code>shell.nix</code> file is a tiny
+bit simpler than a flake.</p>
+</li>
+<li>
+<p><a href="https://myme.no/posts/2022-01-16-nixos-the-ultimate-dev-environment.html">This other article</a> from Martin Myrseth takes a look as Nix and NixOS as a development environment.
+Most of it actually does not require NixOS specifically, and is therefore more relevant here.
+It differs from the other by going way deeper in the language and the functioning of a flake, with digressions about useful community libraries like <a href="https://github.com/numtide/flake-utils">flake-utils</a>.
+It also has a realistic use case with an environment for a full stack application, which implies multiple languages and tool stacks.</p>
+</li>
+</ul>
+<p>The principles behind development environments can easily be extended to any kind of shell environments.
+For instance, RedNix (a NixOS-based distribution for penetration testing and security) provides <code>devShells</code> for different categories of security tools.
+This can be adapted to other use cases, as long as one of your activities requires having access to a set of packages and configurations in your shell.
+You can make it more permanent by looking at <a href="https://nixos.org/manual/nix/stable/command-ref/new-cli/nix3-profile.html">profiles</a>.</p>
+<p>While Nix can theoretically be installed on any Linux distribution (as well as on MacOS), users might be reluctant to install a daemon running in root to use it.
+There are <a href="https://github.com/DavHau/nix-portable">community efforts</a> to make nix portable and self-contained, but these are very niche projects.</p>
+
+
+<div class="notice note  notice-collapsible " >
+    <p class="first notice-title">
+        <span class="icon-notice baseline">
+            <svg>
+                <use href="#note-notice"></use>
+            </svg>
+        </span>
+        <span class="notice-title-text">About right management</span>
+        <span class="notice-toggle-indicator" style="transform: rotate(0deg);"> > </span>
+    </p>
+    <div class="notice-content"><p>You need administrator rights to install Nix, as it requires mounting a dedicated volume at <code>/</code> for the nix store (<code>/nix/store</code>)&mdash;where derivations, sources, and binaries are stored&mdash;, and running a root daemon for multi-users installations.
+However, once it is done, every other operation can be done at user-level without particular rights.</p></div>
+</div>
+<p>Finally, you can have a look at <a href="https://devenv.sh/">devenv.sh</a>, a do-it-all utility that aims at streamlining the entire DevOps process using Nix.
+It is especially geared towards novices, and does a lot of stuff to make Nix&rsquo;s ecosystem more accessible.
+Therefore, I would recommend <strong>against</strong> using it, as it does a lot of abstraction that hides how Nix works.
+Furthermore, if you use flakes (which you should), a <code>devenv.nix</code> file in your project directory will not do much that you cannot do with your <code>flake.nix</code> if you know the syntax, such as shell environments, build recipes, and
+more.
+It remains a great tool if you do not want to learn about Nix, or for user service management in your environment.</p>
+<h3 id="tidying-your-home">Tidying your $HOME</h3>
+<p>Probably the second most important advantage to Nix’s ecosystem is its declarative package and configuration management system, via NixOS.
+However, it is impossible to enjoy (some of) the advantages of NixOS on other distributions.</p>
+<p><a href="https://nix-community.github.io/home-manager/">Home-Manager</a> is a community project to port NixOS’ philosophy to the user’s home directory and user services.
+Originally made by Robert Helgesson, the project has since been transferred to the <a href="https://nix-community.org/"><code>nix-community</code></a> GitHub organisation.
+The latter is a semi-official organization that works alongside the official NixOS team to maintain community projects and resources around the entire Nix ecosystem.</p>
+<p>Home-Manager has its own “official” documentation, but it is quite sparse.
+Some of the resources that we have already covered address Home-Manager and its usage, but the following are specific to
+it.</p>
+<ul>
+<li>
+<p>The “<a href="https://nix-community.github.io/home-manager/index.html">official</a>” documentation focuses on Home-Manager’s installation, and gives a few configuration examples.
+It is not very dense, but is definitely the first thing to read if you are interested in Home-Manager.
+Note that since the overall structure and usage of the Home-Manager—provided modules are very close to NixOS’, having experience with NixOS is definitely an advantage.</p>
+</li>
+<li>
+<p>The <a href="https://nix-community.github.io/home-manager/options.html">Configuration Options</a> annex in the official documentation is a great resource to configure the official provided modules.
+It lacks a search engine, but is probably the most up-to-date documentation available.</p>
+</li>
+<li>
+<p><a href="https://mipmip.github.io/home-manager-option-search/">Home-Manager Options Search</a> is a community-made search engine, independent from the &ldquo;official&rdquo; Home-Manager development team.
+It goes through Home-Manager module options to provide the option name (and parent if any), a description, and the expected value type.</p>
+</li>
+</ul>
+<h3 id="declarative-system-configuration">Declarative System Configuration</h3>
+<p>Finally, NixOS is a Linux distribution based on Nix.
+The rationale behind NixOS is the same as Nix&rsquo;: the package manager generates build output in the Nix store, and simlinks them to the filesystem. With NixOS, the same is applied to configuration files, <em>eg.</em> most of your <code>/etc</code> directory will be simlinks to <code>/nix/store</code>.
+To learn about NixOS, the best way remains to play with it.
+The official <a href="https://nixos.org/manual/nixos/stable">NixOS Manual</a> and <a href="https://zero-to-nix.com/concepts/nixos">Zero-to-Nix&rsquo; dedicated page</a> are great general resources on that regard, as mentioned above.</p>
+<p>Now, NixOS is full of resources, and there are a lot of documentation and blogposts to enable this and that.
+I&rsquo;ll give a list of use cases here, and let the reader select those that seem relevant.</p>
+<ul>
+<li>
+<p><em>Specializations</em> are a relatively recent feature that allows you to build multiple boot entries each time you (re-)generate your system.
+For instance, you can have one with loaded Nvidia drivers, and the other with your integrated GPU&rsquo;s ones, to boot on one version depending on your workload.
+<a href="https://www.tweag.io/blog/2022-08-18-nixos-specialisations/">This article</a> from Tweag is a great starting point.</p>
+
+
+<div class="notice note  notice-collapsible " >
+    <p class="first notice-title">
+        <span class="icon-notice baseline">
+            <svg>
+                <use href="#note-notice"></use>
+            </svg>
+        </span>
+        <span class="notice-title-text">About boot entries</span>
+        <span class="notice-toggle-indicator" style="transform: rotate(0deg);"> > </span>
+    </p>
+    <div class="notice-content"><p>NixOS generates boot entries each time you build a new <em>generation</em>.
+A generation is a set of packages and configuration files that are built together, and that can be booted together.
+Every time you run <code>nixos-rebuild</code>, a new generation is created, and a new boot entry is added to your bootloader.
+This makes it virtually impossible to break your system, as you can always boot on a previous generation.</p></div>
+</div>
+</li>
+<li>
+<p>Nix(OS) is also very useful to create minimal container images, as you can build a container image containing only the closure required by your binary.
+You can either use Nix tools, such as <code>pkgs.dockerTools.buildLayeredImage</code> as shown in <a href="https://nixos.org/manual/nix/stable/installation/installing-docker.html">the Manual</a>, or use the more classical Dockerfiles to build your Nix-based images, like in <a href="https://mitchellh.com/writing/nix-with-dockerfiles">this blogpost</a> that uses <code>multi-stage builds</code>.</p>
+
+
+<div class="notice note  notice-collapsible " >
+    <p class="first notice-title">
+        <span class="icon-notice baseline">
+            <svg>
+                <use href="#note-notice"></use>
+            </svg>
+        </span>
+        <span class="notice-title-text">About closures</span>
+        <span class="notice-toggle-indicator" style="transform: rotate(0deg);"> > </span>
+    </p>
+    <div class="notice-content"><p>In programming languages, a closure is the scope of a function, <em>ie.</em> the set of variables that are accessible from a function, as well as the function itself.
+In Nix, everything is stored in the <code>/nix/store</code>, so the closure of a given store path is the set of all references to other store paths that it contains.</p>
+<p>More specifically, for a package in the store, the closure of a derivation is the set of all store paths that are required to build it, and the closure of its output path (<em>eg.</em> the compiled binary) is the set of all its runtime dependencies.
+The Nix Manual has <a href="https://nixos.org/manual/nix/stable/glossary.html">a glossary</a> that can be referred to for details on the Nix vocabulary.</p></div>
+</div>
+</li>
+<li>
+<p>NixOS is especially useful to administrate a fleet of devices, as you can reuse your configuration to have the same environment on all your machines.
+If you sometimes deploy machines &ldquo;on-demand&rdquo;, you might also be interested in tools to manage and update your fleet, such as <code>nixops</code> or <code>deploy-rs</code>.
+Note that <code>nixos-rebuild</code>(the command to build and activate your configuration) already supports remote deployment, as explained in <a href="https://www.haskellforall.com/2023/01/announcing-nixos-rebuild-new-deployment.html">this article</a>.</p>
+</li>
+<li>
+<p>In terms of security, NixOS has some advantages, especially in multi-user installations.
+In fact, in such configuration, each user has unprivileged access to <code>nix</code> and the <code>/nix/store</code>, without impacting the others.
+No need for root&rsquo;s rights.
+The store is in read-only, making it difficult for a third-party software to modify sensitive files.
+You will find some details on the way its works in the corresponding manual chapter.
+I also recommend <a href="https://xeiaso.net/blog/paranoid-nixos-2021-07-18">this article</a> from Xe Iaso about securing Nix; this website has also a lot of posts on that subject.</p>
+</li>
+</ul>
+<h3 id="my-toolbox">My toolbox</h3>
+<p>I have developed a tendency to use Nix <em>everywhere</em> (which you will too!), but my main use case remains development environments.
+As I work on a lot of different projects, I use Nix and Direnv to instantiate environments dynamically when I enter a project&rsquo;s directory, without having to install anything globally.
+I also use Nix to manage my dotfiles (via Home-Manager), and to deploy and manage Linux systems (via NixOS).
+A such, I write a lot of (ugly) Nix code, and I have a few tools that I use to make my life easier.
+Here is a non-exhaustive list of them.</p>
+<ul>
+<li>
+<p><a href="https://direnv.net/">Direnv</a> is not a Nix tool by design.
+It&rsquo;s meant to load and unload environment variables dynamically when you enter and exit a directory.
+However, its integration with Nix (via <code>nix-shell</code> or flakes) makes it a key companion for a Nix user.
+With compatible flakes, it will run <code>nix develop</code> automatically when you open your project&rsquo;s directory, making all your dev dependencies available. Nix Community maintains an <a href="https://github.com/nix-community/nix-direnv">improved version</a> of Direnv&rsquo;s Nix integration which provides persistent caching, resulting in faster shell loading times.</p>
+</li>
+<li>
+<p><a href="https://github.com/numtide/flake-utils"><code>flake-utils</code></a> is a pure Nix library that provides helpers to write flakes.
+The most used ones are probably <code>lib.eachSystem</code> and <code>lib.eachDefaultSystem</code>, which allow you to write a single expression that will be evaluated for each system you want to build for.
+It is especially relevant when writing packages definitions or shell environments, as you can your definition once, without thinking about the target system.
+However, <code>flake-utils</code> is sometimes criticized for the way it abstracts Nix concepts, making it mistake-prone for newcomers.
+Fernando Ayats recently wrote <a href="https://ayats.org/blog/no-flake-utils/">an article</a> on that subject, advocating against using <code>flake-utils</code> in favor of more explicit Nix code, or existing alternatives such as <a href="https://github.com/hercules-ci/flake-parts"><code>flake-parts</code></a>.
+I personally use <code>flake-utils</code> in my projects, but I&rsquo;m not sure whether I would recommend it to newcomers.</p>
+</li>
+<li>
+<p><a href="https://github.com/oxalica/nil"><code>nil</code></a> is a state-of-the-art implementation of LSP (Language Server Protocol) for Nix, which provides autocompletion, syntax checking, and more.
+It is still in development, but already usable.
+It integrates especially well with VSCode via <a href="https://github.com/nix-community/vscode-nix-ide">Nix IDE</a> (the most advanced Nix plugin for VSCode), but can also be used with other editors such as Vim or Emacs.</p>
+</li>
+<li>
+<p><a href="https://github.com/nix-community/nixpkgs-fmt"><code>nixpkgs-fmt</code></a> is a formatter for Nix (no way&hellip;).
+It has been made to standardize the way packages are written in Nixpkgs, but can be used on any Nix file.
+Nix IDE integrates well with it, and can format your files on save.</p>
+</li>
+</ul>
+
+</div>
+
+        </div><div id="footer" class="mb-5">
+    <hr>
+    
+    <div class="container text-center">
+        
+            <a href="https://scholar.google.com/citations?user=BDmzHlcAAAAJ" class="ai ai-google-scholar fa-1x" title="Scholar" rel=""></a>
+        
+            <a href="https://infosec.exchange/@phdcybersec" class="fab fa-mastodon fa-1x" title="Mastodon" rel="me"></a>
+        
+            <a href="https://twitter.com/@phdcybersec" class="fab fa-twitter fa-1x" title="Twitter" rel=""></a>
+        
+            <a href="https://github.com/phdcybersec" class="fab fa-github fa-1x" title="Github" rel=""></a>
+        
+    </div>
+    
+    
+        <div class="container text-center">
+            <a href="http://leolavaur.re/" title="Léo Lavaur, 2022-2023, all rights reserved."><small>Léo Lavaur, 2022-2023, all rights reserved.</small></a>
+        </div>
+    
+</div>
+</body>
+</html>

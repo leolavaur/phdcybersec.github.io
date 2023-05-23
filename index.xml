@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>About Me on Léo Lavaur</title>
+    <link>http://leolavaur.re/</link>
+    <description>Recent content in About Me on Léo Lavaur</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 21 May 2023 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://leolavaur.re/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to get (in)to Nix: resources, tools, and personal experience.</title>
+      <link>http://leolavaur.re/posts/how_to_nix/</link>
+      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://leolavaur.re/posts/how_to_nix/</guid>
+      <description>How to get (in)to Nix: resources, tools, and personal experience. Nix is known to be hard to learn, and the official documentation can be difficult to navigate. I&amp;rsquo;ve been playing around with it for two years, following a plethora of guides and blog posts to implement this and that. I don&amp;rsquo;t see myself as a Nix expert for anything, but I&amp;rsquo;ve gathered a lot of resources over time.
+I won’t talk about “Why you should use Nix” as there are plenty of posts about it, and if you are here, you’re probably at least curious about it.</description>
+    </item>
+    
+    <item>
+      <title>Over-engineered scientific paper writing.</title>
+      <link>http://leolavaur.re/posts/latex_workflow/</link>
+      <pubDate>Wed, 30 Mar 2022 00:00:00 +0000</pubDate>
+      
+      <guid>http://leolavaur.re/posts/latex_workflow/</guid>
+      <description>Over-engineered scientific paper writing A few weeks ago, I received comments from reviewers after I submitted my first scientific paper. While reading through the instructions, I encountered the following:
+ While addressing comments of reviewers and revising your paper, please mark any text you update or add with a special color (e.g., blue), so that reviewers can easily notice your revisions.
+ At first, I thought about making a macro that adds color, and using that macro every time I make a change.</description>
+    </item>
+    
+    <item>
+      <title>About Me</title>
+      <link>http://leolavaur.re/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://leolavaur.re/about/</guid>
+      <description>Hi, I&amp;rsquo;m Léo I&amp;rsquo;m a doctoral researcher at IMT Atlantique and founded by the chair Cyber CNI. Before that, I received an engineering degree in information security from ENSIBS and worked at Orange Cyberdefense as a part-time employee for three years.
+Research Interests My research focuses on the collaboration in security systems, and how to share data without compromising security. I rely on topics like federated machine learning, intrusion detection, and collaborative knowledge sharing.</description>
+    </item>
+    
+    <item>
+      <title>Contact</title>
+      <link>http://leolavaur.re/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://leolavaur.re/contact/</guid>
+      <description> red { color: #dc3545; }  [at] llvr [dot] re --  Email: contact [at] leolavaur [dot] re   Social  LinkedIn Mastodon Twitter  </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>nix, blog on Léo Lavaur</title>
+    <link>http://leolavaur.re/tags/nix-blog/</link>
+    <description>Recent content in nix, blog on Léo Lavaur</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 21 May 2023 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://leolavaur.re/tags/nix-blog/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>How to get (in)to Nix: resources, tools, and personal experience.</title>
+      <link>http://leolavaur.re/posts/how_to_nix/</link>
+      <pubDate>Sun, 21 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>http://leolavaur.re/posts/how_to_nix/</guid>
+      <description>How to get (in)to Nix: resources, tools, and personal experience. Nix is known to be hard to learn, and the official documentation can be difficult to navigate. I&amp;rsquo;ve been playing around with it for two years, following a plethora of guides and blog posts to implement this and that. I don&amp;rsquo;t see myself as a Nix expert for anything, but I&amp;rsquo;ve gathered a lot of resources over time.
+I won’t talk about “Why you should use Nix” as there are plenty of posts about it, and if you are here, you’re probably at least curious about it.</description>
+    </item>
+    
+  </channel>
+</rss>
